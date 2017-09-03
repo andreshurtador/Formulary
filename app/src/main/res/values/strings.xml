@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Formulario:</string>
+    <string name="user">Usuario:</string>
+    <string name="password">Password:</string>
+    <string name="repetirpassword">Repetir:</string>
+    <string name="correo">Email:</string>
+    <string name="femenino">Femenino</string>
+    <string name="masculino">Masculino</string>
+    <string name="fecha">Fecha Nacimiento:</string>
+    <string name="lugar">Lugar Nacimiento:</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="informacion">Informacion</string>
+    <string name="correr">Correr</string>
+    <string name="saltar">Saltar</string>
+    <string name="trotar">Trotar</string>
+    <string name="caminar">Caminar</string>
+    <string name="actividad">Actividad Fisica Preferida:</string>
+    <string name="genero">Genero:</string>
+</resources>
