@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private CheckBox cCaminar, cCorrer, cTrotar, cSaltar;
     private Button bAceptar;
     private TextView tInformacion, tFecha;
-    private String CiudadElegida= " ", User= " ", Password= " ", Repetir= " ", Email= " ", Genero= " ", Actividades = " ", Fecha= " ";
+    private String CiudadElegida, User, Password, Repetir, Email, Genero, Actividades="", Fecha;
     private Spinner sCiudades;
     private static final String TAG = "MainAcivity";
     private DatePickerDialog.OnDateSetListener dFecha;
@@ -105,12 +106,63 @@ public class MainActivity extends AppCompatActivity {
         Password = ePassword.getText().toString();
         Repetir = eRepetir.getText().toString();
         Email = eEmail.getText().toString();
-
+        Fecha = tFecha.getText().toString();
         Actividades = "";
+
+        if (cCorrer.isChecked()) {
+            Actividades += "Gaming ";
+        }
+        if (cCaminar.isChecked()) {
+            Actividades += "Dormir ";
+        }
+        if (cTrotar.isChecked()) {
+            Actividades += "Comer ";
+        }
+        if (cSaltar.isChecked()) {
+            Actividades += "Leer ";
+        }
+
+        if (rMasculino.isChecked()) {
+            Genero = "Masculino";
+        } else {
+            Genero = "Femenino";
+        }
+
+        if (!TextUtils.isEmpty(User) && !TextUtils.isEmpty(Password)&&
+                !TextUtils.isEmpty(Repetir) && !TextUtils.isEmpty(Email) &&
+                !TextUtils.isEmpty(Fecha) && !TextUtils.isEmpty(CiudadElegida) && !TextUtils.isEmpty(Actividades) && !TextUtils.isEmpty(Genero)) {
+
+            if (Password.equals(Repetir)) {
+
+
+                tInformacion.setText("Usuario: " + User + " \nPassword: " + Password + " \nE-mail: " + Email + " \nFecha de nacimiento : " + Fecha +
+                        " \nSexo: " + Genero + " \nActividad(es): " + Actividades + " \nCiudad: " + CiudadElegida);
+            } else {
+                tInformacion.setText("Porfavor verifique que los password cocincidan !");
+                ePassword.setText("");
+                eRepetir.setText("");
+                ePassword.setError("Digite nuevamente");
+
+            }
+
+        }
+
+        else {tInformacion.setText("Faltan campos por llenar");
+
+            if(TextUtils.isEmpty(User)){tInformacion.setText("Faltan campos por llenar" + "\nSeleccione algun hobbie");}
+            if(TextUtils.isEmpty(Password)){tInformacion.setText("Faltan campos por llenar" + "\nSeleccione algun hobbie");}
+            if(TextUtils.isEmpty(Repetir)){tInformacion.setText("Faltan campos por llenar" + "\nSeleccione algun hobbie");}
+            if(TextUtils.isEmpty(Email)){tInformacion.setText("Faltan campos por llenar" + "\nSeleccione algun hobbie");}
+            if(TextUtils.isEmpty(Fecha)){tInformacion.setText("Faltan campos por llenar" + "\nSeleccione algun hobbie");}
+            if(TextUtils.isEmpty(Actividades)){tInformacion.setText("Faltan campos por llenar" + "\nSeleccione algun hobbie");}
+
+        }
+
+
+
 
 
     }
-
 
 }
 
