@@ -13,9 +13,10 @@
     <string name="correr">Correr</string>
     <string name="saltar">Saltar</string>
     <string name="trotar">Trotar</string>
-    <string name="caminar">Caminar</string>
+    <string name="caminar">Camina</string>
     <string name="actividad">Actividad Fisica Preferida:</string>
     <string name="genero">Genero:</string>
+    <string name="ddmmaaaa">ddmmaaa</string>
 
     <string-array name="ciudades">
         <item>Bogotá</item>
