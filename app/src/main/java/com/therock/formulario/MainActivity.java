@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView tInformacion, tFecha;
     private String CiudadElegida= " ", User= " ", Password= " ", Repetir= " ", Email= " ", Genero= " ", Actividades = " ", Fecha= " ";
     private Spinner sCiudades;
+    private static final String TAG = "MainAcivity";
+    private DatePickerDialog.OnDateSetListener dFecha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
         tFecha = (TextView) findViewById(R.id.tFecha);
         sCiudades = (Spinner) findViewById(R.id.sCiudades);
 
+
+
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.ciudades, android.R.layout.simple_spinner_item);
 
@@ -67,6 +71,31 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        tFecha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Calendar cal = Calendar.getInstance();
+                int año = cal.get(Calendar.YEAR);
+                int mes = cal.get(Calendar.MONTH);
+                int dia = cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(MainActivity.this, android.R.style.Theme_Material_Dialog_Alert, dFecha, año, mes, dia);
+
+                dialog.show();
+            }
+        });
+
+        dFecha = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int año, int mes, int dia) {
+                mes = mes + 1;
+                Log.d(TAG, "onDateSet: mm/dd/yyy: " + mes + "/" + dia + "/" + año);
+
+                String fecha = " " + mes + "/" + dia + "/" + año;
+                tFecha.setText(fecha);
+            }
+        };
 
 
     }
