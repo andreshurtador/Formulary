@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private Button bAceptar;
     private TextView tInformacion, tFecha;
     private String CiudadElegida= " ", User= " ", Password= " ", Repetir= " ", Email= " ", Genero= " ", Actividades = " ", Fecha= " ";
-
+    private Spinner sCiudades;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +48,26 @@ public class MainActivity extends AppCompatActivity {
         bAceptar = (Button) findViewById(R.id.bAceptar);
         tInformacion = (TextView) findViewById(R.id.tInformacion);
         tFecha = (TextView) findViewById(R.id.tFecha);
+        sCiudades = (Spinner) findViewById(R.id.sCiudades);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.ciudades, android.R.layout.simple_spinner_item);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sCiudades.setAdapter(adapter);
+
+        sCiudades.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                CiudadElegida = adapterView.getItemAtPosition(i).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
 
     }
 
