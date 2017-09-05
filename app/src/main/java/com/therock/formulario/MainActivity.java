@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private CheckBox cCaminar, cCorrer, cTrotar, cSaltar;
     private Button bAceptar;
     private TextView tInformacion, tFecha;
-    private String CiudadElegida, User, Password, Repetir, Email, Genero, Actividades="", Fecha;
+    private String CiudadElegida, User, Password, Repetir, Email, Genero, Actividades = "", Fecha;
     private Spinner sCiudades;
     private static final String TAG = "MainAcivity";
     private DatePickerDialog.OnDateSetListener dFecha;
@@ -53,8 +53,6 @@ public class MainActivity extends AppCompatActivity {
         tFecha = (TextView) findViewById(R.id.tFecha);
         sCiudades = (Spinner) findViewById(R.id.sCiudades);
 
-
-
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.ciudades, android.R.layout.simple_spinner_item);
 
@@ -66,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 CiudadElegida = adapterView.getItemAtPosition(i).toString();
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
@@ -80,9 +77,7 @@ public class MainActivity extends AppCompatActivity {
                 int año = cal.get(Calendar.YEAR);
                 int mes = cal.get(Calendar.MONTH);
                 int dia = cal.get(Calendar.DAY_OF_MONTH);
-
                 DatePickerDialog dialog = new DatePickerDialog(MainActivity.this, android.R.style.Theme_Material_Dialog_Alert, dFecha, año, mes, dia);
-
                 dialog.show();
             }
         });
@@ -92,14 +87,12 @@ public class MainActivity extends AppCompatActivity {
             public void onDateSet(DatePicker datePicker, int año, int mes, int dia) {
                 mes = mes + 1;
                 Log.d(TAG, "onDateSet: mm/dd/yyy: " + mes + "/" + dia + "/" + año);
-
                 String fecha = " " + mes + "/" + dia + "/" + año;
                 tFecha.setText(fecha);
             }
         };
-
-
     }
+
 
     public void Aceptar(View view) {
         User = eUser.getText().toString();
@@ -110,16 +103,16 @@ public class MainActivity extends AppCompatActivity {
         Actividades = "";
 
         if (cCorrer.isChecked()) {
-            Actividades += "Gaming ";
+            Actividades += "Correr ";
         }
         if (cCaminar.isChecked()) {
-            Actividades += "Dormir ";
+            Actividades += "Caminar ";
         }
         if (cTrotar.isChecked()) {
-            Actividades += "Comer ";
+            Actividades += "Trotar ";
         }
         if (cSaltar.isChecked()) {
-            Actividades += "Leer ";
+            Actividades += "Saltar ";
         }
 
         if (rMasculino.isChecked()) {
@@ -128,13 +121,10 @@ public class MainActivity extends AppCompatActivity {
             Genero = "Femenino";
         }
 
-        if (!TextUtils.isEmpty(User) && !TextUtils.isEmpty(Password)&&
+        if (!TextUtils.isEmpty(User) && !TextUtils.isEmpty(Password) &&
                 !TextUtils.isEmpty(Repetir) && !TextUtils.isEmpty(Email) &&
                 !TextUtils.isEmpty(Fecha) && !TextUtils.isEmpty(CiudadElegida) && !TextUtils.isEmpty(Actividades) && !TextUtils.isEmpty(Genero)) {
-
             if (Password.equals(Repetir)) {
-
-
                 tInformacion.setText("Usuario: " + User + " \nPassword: " + Password + " \nE-mail: " + Email + " \nFecha de nacimiento : " + Fecha +
                         " \nSexo: " + Genero + " \nActividad(es): " + Actividades + " \nCiudad: " + CiudadElegida);
             } else {
@@ -142,28 +132,31 @@ public class MainActivity extends AppCompatActivity {
                 ePassword.setText("");
                 eRepetir.setText("");
                 ePassword.setError("Digite nuevamente");
-
             }
-
+        } else {
+            tInformacion.setText("Faltan campos por llenar");
+            if (TextUtils.isEmpty(User)) {
+                tInformacion.setText("Faltan campos por llenar" + "\nSeleccione actividad");
+            }
+            if (TextUtils.isEmpty(Password)) {
+                tInformacion.setText("Faltan campos por llenar" + "\nSeleccione actividad");
+            }
+            if (TextUtils.isEmpty(Repetir)) {
+                tInformacion.setText("Faltan campos por llenar" + "\nSeleccione actividad");
+            }
+            if (TextUtils.isEmpty(Email)) {
+                tInformacion.setText("Faltan campos por llenar" + "\nSeleccione actividad");
+            }
+            if (TextUtils.isEmpty(Fecha)) {
+                tInformacion.setText("Faltan campos por llenar" + "\nSeleccione actividad");
+            }
+            if (TextUtils.isEmpty(Actividades)) {
+                tInformacion.setText("Faltan campos por llenar" + "\nSeleccione actividad");
+            }
         }
-
-        else {tInformacion.setText("Faltan campos por llenar");
-
-            if(TextUtils.isEmpty(User)){tInformacion.setText("Faltan campos por llenar" + "\nSeleccione algun hobbie");}
-            if(TextUtils.isEmpty(Password)){tInformacion.setText("Faltan campos por llenar" + "\nSeleccione algun hobbie");}
-            if(TextUtils.isEmpty(Repetir)){tInformacion.setText("Faltan campos por llenar" + "\nSeleccione algun hobbie");}
-            if(TextUtils.isEmpty(Email)){tInformacion.setText("Faltan campos por llenar" + "\nSeleccione algun hobbie");}
-            if(TextUtils.isEmpty(Fecha)){tInformacion.setText("Faltan campos por llenar" + "\nSeleccione algun hobbie");}
-            if(TextUtils.isEmpty(Actividades)){tInformacion.setText("Faltan campos por llenar" + "\nSeleccione algun hobbie");}
-
-        }
-
-
-
-
-
     }
-
 }
+
+
 
 

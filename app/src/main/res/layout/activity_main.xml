@@ -34,7 +34,9 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="@string/user" />
+                    android:inputType="textPersonName"
+                    android:hint="Usuario"
+                    android:onClick="CleanUser"/>
             </LinearLayout>
 
             <LinearLayout
@@ -57,7 +59,9 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="@string/password" />
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:onClick="CleanPass"/>
             </LinearLayout>
 
             <LinearLayout
@@ -79,7 +83,8 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="@string/repetirpassword" />
+                    android:hint="Repetir Password"
+                    android:inputType="textPassword"/>
             </LinearLayout>
 
             <LinearLayout
@@ -101,7 +106,9 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="@string/correo" />
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
+                    android:onClick="CleanEmail"/>
             </LinearLayout>
 
             <LinearLayout
@@ -162,7 +169,7 @@
                     android:id="@+id/tFecha"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/ddmmaaaa"
+                    android:hint="dd/mm/mmmm"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
             </LinearLayout>
